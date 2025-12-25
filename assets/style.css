@@ -33,3 +33,9 @@ main {
 .orange {
   background-color: orange;
 }
+.white {
+  background-color: white;
+}
+.hide {
+  display: none;
+}
