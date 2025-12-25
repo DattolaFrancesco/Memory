@@ -4,12 +4,12 @@ const colorArray = [];
 const cardsPicked = [];
 const divArray = [];
 let click = 0;
-const shuffleColor = () => {
+const shuffleColor = (n) => {
   let usedNumber = [];
-  for (let i = 0; i < 4; i++) {
-    let num = Math.floor(Math.random() * 4);
+  for (let i = 0; i < n; i++) {
+    let num = Math.floor(Math.random() * n);
     while (usedNumber.some((e) => e === num)) {
-      num = Math.floor(Math.random() * 4);
+      num = Math.floor(Math.random() * n);
     }
     usedNumber.push(num);
   }
@@ -17,7 +17,7 @@ const shuffleColor = () => {
 };
 const createColorArray = () => {
   for (let i = 0; i < 6; i++) {
-    colorArray.push(...shuffleColor());
+    colorArray.push(...shuffleColor(4));
   }
 };
 
@@ -45,20 +45,26 @@ const createCards = () => {
   }
   console.log(divArray);
 };
-createCards();
 
 const check = () => {
   if (click === 2) {
     click = 0;
     if (!(cardsPicked[0].className.trim() == cardsPicked[1].className.trim())) {
-      const ciao = setInterval(() => {
+      const timeOut = setInterval(() => {
         cardsPicked[0].classList.add("white");
         cardsPicked[1].classList.add("white");
         cardsPicked.splice(0, 2);
-        clearInterval(ciao);
+        clearInterval(timeOut);
       }, 500);
     } else {
-      cardsPicked.splice(0, 2);
+      cardsPicked[0].classList.add("rightSet");
+      cardsPicked[1].classList.add("rightSet");
+      const cardRevealed = setInterval(() => {
+        cardsPicked[0].classList.add("opacity");
+        cardsPicked[1].classList.add("opacity");
+        cardsPicked.splice(0, 2);
+        clearInterval(cardRevealed);
+      }, 500);
     }
   }
 };
