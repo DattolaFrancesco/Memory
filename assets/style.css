@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 80%;
+  width: 75%;
+  background-color: greenyellow;
+}
+.card {
+  border: 2px solid black;
+  width: 10%;
+  height: 30%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
+.blue {
+  background-color: blue;
+}
+.red {
+  background-color: red;
+}
+.green {
+  background-color: green;
+}
+.orange {
+  background-color: orange;
+}
